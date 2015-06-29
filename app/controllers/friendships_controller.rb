@@ -4,6 +4,8 @@ class FriendshipsController < ApplicationController
   end
 
   def show
+    @user = User.find_by(username: params[:username])
+    @this_user_id = @user.id 
   end
 
   def new
@@ -13,9 +15,8 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
     binding.pry
-
     if @friendship.save
-      redirect_to friendship_path
+      redirect_to index_path
     else
       render :new
     end
