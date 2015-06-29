@@ -37,14 +37,15 @@
   </div>
 
     <div class="field">
-    <%= f.label :state %> ex: UT,CA,NY <br />
-    <%= f.text_field :state, autofocus: true %>
+    <%= f.label :state %><br />
+    <%= f.select :state, options_for_select(us_states), autofocus: true %>
   </div>
 
     <div class="field">
     <%= f.label :zipcode %><br />
     <%= f.text_field :zipcode, autofocus: true %>
   </div>
+
 
 
   <div class="actions">
