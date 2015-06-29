@@ -4,8 +4,6 @@ class FriendshipsController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: params[:username])
-    @this_user_id = @user.id 
   end
 
   def new
