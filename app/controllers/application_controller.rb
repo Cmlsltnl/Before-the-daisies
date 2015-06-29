@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :state
     devise_parameter_sanitizer.for(:sign_up) << :zipcode
   end
+
+  def after_sign_in_path_for(resource)
+    index_path(current_user) #your path
+  end
 end
