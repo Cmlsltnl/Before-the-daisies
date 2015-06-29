@@ -28,7 +28,7 @@
         <td><%= item.user_id %></td>
         <td><%= link_to 'Show', item %></td>
         <% if item.user == current_user %>
-          <td><%= link_to 'Edit', edit_item_path(@item) %></td>
+          <td><%= link_to 'Edit', edit_item_path(item.id) %></td>
           <td><%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
@@ -39,8 +39,3 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
-
-<% if item.user == current_user %>
-  <td><%= link_to 'Edit', edit_item_path(@item) %></td>
-  <td><%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>

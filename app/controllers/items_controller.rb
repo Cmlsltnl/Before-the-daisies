@@ -75,7 +75,7 @@ class ItemsController < ApplicationController
     end
 
     def authorized_user
-      @link = current_user.links.find_by(id: params[:id])
-      redirect_to links_path, notice: "Not authorized to edit this link" if @link.nil?
+      @item = current_user.items.find_by(id: params[:id])
+      redirect_to items_path, notice: "Not authorized to edit this item" if @item.nil?
     end
 end
