@@ -1,0 +1,9 @@
+<%= form_tag(friendships_path, class:'form') do %>
+
+    <div class="form-group">
+      <%= hidden_field_tag "friendship[user_id]", current_user.id  %>
+      <%= hidden_field_tag "friendship[friend_id]", params[:id]  %>
+      <%= submit_tag('Add User as Friend', class: 'btn btn-success btn-lg') %>
+    </div>
+
+  <% end %>
