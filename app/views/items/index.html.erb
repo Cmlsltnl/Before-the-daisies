@@ -19,6 +19,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= image_tag item.image(:thumb) %></td>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.location %></td>
