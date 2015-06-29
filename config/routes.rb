@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :friendships
 
   root 'welcome#index'
-  get ':id' => 'users#show'
+  get ':username' => 'users#show'
 
 end
