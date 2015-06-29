@@ -1,1 +1,18 @@
 <h1><%= current_user.username %></h1>
+<div class='row'>
+  <div class="col-sm-2 verticalLine">
+    <%= render 'side_nav' %>
+  </div>
+  <div class="col-sm-2 verticalLine">
+    <div class='custom-header'>My buckets</div>
+    <% @show_stuff.each do |item| %>
+      <%= link_to item.title, item_path(item.id) %><br>
+      <% end %>
+  </div>
+  <div class="col-sm-2 verticalLine">
+    <div class='custom-header'>Friends Buckets</div>
+    <% @show_stuff.each do |item| %>
+      <%= link_to item.title, item_path(item.id) %><br>
+      <% end %>
+  </div>
+</div>

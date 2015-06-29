@@ -1,2 +1,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.verticalLine {
+    border-right: thin solid #d1d1d1
+}
+
+.custom-header {
+
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.custom_text {
+  font-size: 20px;
+  color: green;
+}
