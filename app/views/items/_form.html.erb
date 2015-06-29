@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %> :Bucket Item <br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -24,20 +24,8 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.check_box :completed %>
-  </div>
-  <div class="field">
-    <%= f.label :importance %><br>
-    <%= f.number_field :importance %>
-  </div>
-  <div class="field">
-    <%= f.label :completed_date %><br>
-    <%= f.datetime_select :completed_date %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :importance %> 1 - not impotant, 5 - some what important, 10 - Very important<br>
+    <%= f.select :importance,  options_for_select(importance_options), autofocus: true  %>
   </div>
   <div class="field">
     <%= f.label :image %><br>
