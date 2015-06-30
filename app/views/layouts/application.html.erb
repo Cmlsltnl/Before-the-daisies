@@ -44,8 +44,17 @@
 
 <div class="row">
   <footer>
-    <hr />
-    copyright &copy <%= Time.now.year %>
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+  <%= link_to 'Features', features_index_path, :class => 'navbar-link' %>
+  <%= link_to 'About', about_index_path, :class => 'navbar-link' %>
+  <%= link_to 'Contact', contact_index_path, :class => 'navbar-link' %>
+
+    <p align="right">copyright &copy <%= Time.now.year %></p>
+  
+  </div>
+</nav>
+    
   </footer>
   </div>
 </div>
