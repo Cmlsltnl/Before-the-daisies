@@ -22,7 +22,7 @@ function deselect(e) {
 }
 
 $(function() {
-  $('#contact').on('click', function() {
+  $('#close_bucket').on('click', function() {
     if($(this).hasClass('selected')) {
       deselect($(this));
     } else {
@@ -33,7 +33,7 @@ $(function() {
   });
 
   $('.close').on('click', function() {
-    deselect($('#contact'));
+    deselect($('#close_bucket'));
     return false;
   });
 });
