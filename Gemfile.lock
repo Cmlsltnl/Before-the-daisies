@@ -216,13 +216,10 @@ GEM
       rdoc (~> 4.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-<<<<<<< HEAD
     simple_oauth (0.3.1)
-=======
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
->>>>>>> bf39796f229bb89fc4adaf7d4d71c2fbd5b97b02
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
