@@ -1,4 +1,3 @@
-<%= form_for @item, html: { multipart: true } do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -11,27 +10,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %> :Bucket Item <br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :importance %> 1 - not impotant, 5 - some what important, 10 - Very important<br>
-    <%= f.select :importance,  options_for_select(importance_options), autofocus: true  %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for @item, html: { multipart: true } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :importance, :collection => 1..10, :hint => "1 - not important, 5 - some what important, 10 - very important" %>
+  <%= f.input :image %>
+  <%= f.button :submit %>
 <% end %>
+
