@@ -21,7 +21,10 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all items as @items" do
-      item = Item.create! valid_attributes
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      user = FactoryGirl.create(:user)
+      sign_in user
+      item = FactoryGirl.create(:item)
       get :index, {}, valid_session
       expect(assigns(:items)).to eq([item])
     end
