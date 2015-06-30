@@ -1,11 +1,11 @@
 <div class="container bord new" style="background-color: white">
   <%= simple_form_for @item, html: { multipart: true } do |f| %>
     <%= f.input :title %>
-    <%= f.input :description %>
+    <%= f.input :description, label: 'Description:' %>
     <%= f.input :location %>
     <%= f.input :importance, :collection => 1..10, :hint => "1 - not important, 5 - some what important, 10 - very important" %>
     <%= f.input :image %>
-    <%= f.button :submit%>
+    <%= f.button :submit %>
   <% end %>
 </div>
 
