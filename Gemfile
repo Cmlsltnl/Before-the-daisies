@@ -36,6 +36,8 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
+gem 'simple_form'
+
 #used for logging in and keeping track of users
 gem 'devise'
 
