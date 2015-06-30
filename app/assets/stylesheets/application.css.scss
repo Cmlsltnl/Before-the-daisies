@@ -1,7 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 body { padding-bottom: 70px; }
+
+#item_importance {
+  max-width: 75px;
+}
+
 
 .simple_form label {
   float: left;
@@ -23,14 +29,20 @@ body { padding-bottom: 70px; }
   text-shadow: 2px 2px 5px #97A0A2;
 }
 
-.inner {
+/*.inner {
   box-shadow: inset 0 0 10px #C0C0C0;
-}
+}*/
 
-#img {
+.img {
   background-image: asset-url('daisies.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.btn {
+  border-radius: 10%;
+  color: black;
+  background-color: white;
 }
 
 .simple_form div.input {
