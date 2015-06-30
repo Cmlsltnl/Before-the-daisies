@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
 
   def index
-    @show_stuff = Item.all
+    @show_stuff = current_user.items.all
+    @friends_stuff = current_user.friends
   end
 
   def show

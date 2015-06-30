@@ -3,16 +3,34 @@
   <div class="col-sm-2 verticalLine">
     <%= render 'side_nav' %>
   </div>
-  <div class="col-sm-2 verticalLine">
-    <div class='custom-header'>My buckets</div>
+  <div class="col-sm-3 verticalLine">
+    <div class='custom-header'>My buckets<hr /></div>
     <% @show_stuff.each do |item| %>
-      <%= link_to item.title, item_path(item.id) %><br>
+      <% if item.completed %>
+        <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
+      <% else %>
+        <%= link_to item.title, item_path(item.id)%>
+        <div class="messagepop pop">
+            <%= form_for item, {url: item_path(item.id)} do |f| %>
+              <%= f.label 'When did you complete your bucket?' %>
+              <%= f.date_select :completed_date %><br>
+              <%= f.hidden_field :completed, value: :true %>
+              <%= f.submit 'Complete bucket' %>
+            <% end %>
+           <a class="close" href="/">Cancel</a></p>
+        </div>
+
+        <a href="/contact" id="contact" class='glyphicon glyphicon-unchecked'></a><br>
+      <% end %>
       <% end %>
   </div>
-  <div class="col-sm-2 verticalLine">
-    <div class='custom-header'>Friends Buckets</div>
-    <% @show_stuff.each do |item| %>
-      <%= link_to item.title, item_path(item.id) %><br>
+  <div class="col-sm-3 verticalLine">
+    <div class='custom-header'>Friends Buckets<hr /></div>
+    <% @friends_stuff.each do |friend| %>
+      <% @item = friend.items %>
+      <% @item.each do |item| %>
+          <%= link_to item.title, item_path(item.id) %><br>
       <% end %>
+    <% end %>
   </div>
 </div>

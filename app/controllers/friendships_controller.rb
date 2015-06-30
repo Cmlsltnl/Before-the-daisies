@@ -12,7 +12,6 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = Friendship.new(friendship_params)
-    binding.pry
     if @friendship.save
       redirect_to index_path
     else
