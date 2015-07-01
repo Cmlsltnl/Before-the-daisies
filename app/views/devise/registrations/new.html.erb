@@ -7,7 +7,7 @@
   <%= f.input :password %>
   <em>(<%= @minimum_password_length %> characters minimum)</em>
   <br>
-  <%= f.input :password_confirmation, label: 'PasswordConformation', autocomplete: "off" %>
+  <%= f.input :password_confirmation, autocomplete: "off" %>
   <%= f.input :age, collection: 10..100 %>
   <%= f.input :city, autofocus: true %>
   <%= f.input :state, collection: us_states, autofocus: true %>
