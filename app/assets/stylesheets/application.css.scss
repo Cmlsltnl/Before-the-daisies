@@ -2,9 +2,13 @@
 @import "bootstrap";
 
 
+#sign-up-form {
+  width: 70%;
+}
 
 .optional {
   display: block;
+  max-height: 75px;
 }
 .optional:after {
     content:"\a";
