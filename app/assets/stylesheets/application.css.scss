@@ -3,6 +3,14 @@
 
 body { padding-bottom: 70px; }
 
+.around-the-world{
+  border-style: solid;
+  border-width: medium;
+  padding: 15px;
+  border-radius: 5px;
+  border-color: #d1d1d1;
+}
+
 #item_importance, #user_age, #user_state {
   max-width: 75px;
 }
@@ -95,8 +103,30 @@ body { padding-bottom: 70px; }
 
 }
 
+.custom-header2 {
+  font-size: 15px;
+  font-weight: bold;
+  color: red;
+}
+
+.custom-header2 a:link{
+  color: black;
+}
+
+.custom-header2 a:visited{
+  color: black;
+}
+
+
+
+.scroller{
+  height: 330px;
+  overflow: scroll;
+
+}
+
 .custom_text {
-  font-size: 20px;
+  font-size: 17px;
   color: green;
 }
 .custom_text:link{
