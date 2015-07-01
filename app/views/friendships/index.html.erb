@@ -1,6 +1,7 @@
-<% @users.each do |user| %>
-    <div class='col-sm-3 text-center'>
-        <%= image_tag user.image(:thumb) %><br>
-        <%= link_to user.username, user_path(user.username)%><br><br>
-    </div>
-<% end %>
+
+  <% @users.each do |user| %>
+      <div class='col-sm-3 text-center around-the-world', style="margin:2px;"}>
+          <%= image_tag user.image(:thumb) %><br>
+          <%= link_to user.username, user_path(user.username)%><br><br>
+      </div>
+  <% end %>
