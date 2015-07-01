@@ -23,7 +23,7 @@
   <div class="well">
     <div class='custom-header'>Friends Buckets<hr /></div>
     <% @friends_stuff.each do |friend| %>
-      <h4><%= friend.username %></h4><br>
+      <h4><%= link_to friend.username, user_path(friend.username) %></h4>
       <% @item = friend.items %>
       <% @item.each do |item| %>
           <%= link_to item.title, item_path(item.id) %><br>
@@ -37,9 +37,11 @@
 
   <%= form_tag(item_path(@itemid), method: :put) do %>
     <%= label_tag 'When did you complete your bucket?' %>
+    
     <%= select_date Date.today, prefix: "item[completed_date]" %><br>
     <%= hidden_field_tag "item[completed]", :true %>
     <%= submit_tag 'Complete bucket' %>
   <% end %>
-   <a class="close" href="/">Cancel</a></p>
+   <a class="close" href="">Cancel</a></p>
 </div>
+
