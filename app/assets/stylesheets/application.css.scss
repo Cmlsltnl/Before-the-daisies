@@ -2,9 +2,9 @@
 @import "bootstrap";
 
 
-#item_importance {
-  max-width: 75px;
-}
+
+body { padding-bottom: 70px; }
+
 .simple_form label {
   float: left;
   width: 100px;
@@ -39,6 +39,7 @@
   border-radius: 10%;
   color: black;
   background-color: white;
+  border-color: #D3D7D8;
 }
 
 .simple_form div.input {
