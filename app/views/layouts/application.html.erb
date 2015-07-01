@@ -2,16 +2,20 @@
 <html>
 <head>
   <title>BeforeTheDaisies</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <header class="navbar navbar-default" role="navigation">
     <div class="navbar-inner">
       <div class="container">
-        <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", root_path %></div>
+        <% if current_user %>
+          <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", index_path %></div>
+        <% else %>
+          <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", root_path %></div>
+        <% end %>
         <nav class="collapse navbar-collapse navbar-ex1-collapse">
           <% if user_signed_in? -%>
             <ul class="nav navbar-nav navbar-right">
