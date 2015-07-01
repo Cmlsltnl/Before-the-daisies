@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
-        format.html { render :edit } 
+        format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -71,6 +71,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
+      binding.pry
       params.require(:item).permit(:title, :description, :location, :completed, :importance, :completed_date, :user_id, :image)
     end
 

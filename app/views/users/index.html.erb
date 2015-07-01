@@ -10,19 +10,9 @@
         <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
       <% else %>
         <%= link_to item.title, item_path(item.id)%>
-        <div class="messagepop pop">
-            <%= form_for item, {url: item_path(item.id)} do |f| %>
-              <%= f.label 'When did you complete your bucket?' %>
-              <%= f.date_select :completed_date %><br>
-              <%= f.hidden_field :completed, value: :true %>
-              <%= f.submit 'Complete bucket' %>
-            <% end %>
-           <a class="close" href="/">Cancel</a></p>
-        </div>
-
-        <a href="" id="close_bucket" class='glyphicon glyphicon-unchecked'></a><br>
+        <a href= <%= "/" %> id="close_bucket" itemid=<%= item.id %> class='glyphicon glyphicon-unchecked'></a><br>
       <% end %>
-      <% end %>
+    <% end %>
   </div>
   <div class="col-sm-3 verticalLine">
     <div class='custom-header'>Friends Buckets<hr /></div>
@@ -33,4 +23,15 @@
       <% end %>
     <% end %>
   </div>
+</div>
+
+<div class="messagepop pop">
+
+  <%= form_tag(item_path(@itemid), method: :put) do %>
+    <%= label_tag 'When did you complete your bucket?' %>
+    <%= date_select Time.now, "item[completed_date]" %><br>
+    <%= hidden_field_tag "item[completed]", :true %>
+    <%= submit_tag 'Complete bucket' %>
+  <% end %>
+   <a class="close" href="/">Cancel</a></p>
 </div>
