@@ -1,7 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#item_importance, #user_age, #user_state {
+body { padding-bottom: 70px; }
+
+#item_importance, #user_age, #user_state{
   max-width: 75px;
 }
 
@@ -134,4 +136,3 @@ label {
   margin: 8px 0;
   padding-bottom: 8px;
 }
-
