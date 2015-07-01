@@ -18,7 +18,7 @@
   <div class="col-sm-3 verticalLine">
     <div class='custom-header'>Friends Buckets<hr /></div>
     <% @friends_stuff.each do |friend| %>
-      <h4><%= friend.username %></h4><br>
+      <h4><%= link_to friend.username, user_path(friend.username) %></h4>
       <% @item = friend.items %>
       <% @item.each do |item| %>
           <%= link_to item.title, item_path(item.id) %><br>
