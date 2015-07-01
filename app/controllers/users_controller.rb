@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     @show_stuff = @user.items.all
     @friends_stuff = @user.friends
 
+    @friends_list = current_user.friends.select(:username).map do |c|
+      c.username unless c.username.nil?
+    end
   end
 
 

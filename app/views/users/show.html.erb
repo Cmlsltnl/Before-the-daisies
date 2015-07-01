@@ -15,15 +15,16 @@
   </div>
   </p>
   <% if current_user.username == params[:username]%>
+  <% elsif @friends_list.include? @user.username %>
   <% else %>
     <%= form_tag(friendships_path, class:'form') do %>
-        <div class="form-group">
-          <%= hidden_field_tag "friendship[user_id]", current_user.id  %>
-          <% @user = User.find_by(username: params[:username]) %>
-          <%= hidden_field_tag "friendship[friend_id]", @user.id  %>
-          <%= submit_tag('Add User as Friend', class: 'btn btn-success btn-med') %>
-        </div>
-      <% end %>
+      <div class="form-group">
+        <%= hidden_field_tag "friendship[user_id]", current_user.id  %>
+        <% @user = User.find_by(username: params[:username]) %>
+        <%= hidden_field_tag "friendship[friend_id]", @user.id  %>
+        <%= submit_tag('Add User as Friend', class: 'btn btn-success btn-med') %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <div class="col-sm-3 verticalLine">
