@@ -1,13 +1,12 @@
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-   <!-- devise_error_messages!  -->
   <%= f.input :username, autofocus: true %>
   <%= f.input :email, autofocus: true %>
   <%= f.input :password %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <!-- <em>(<%= @minimum_password_length %> characters minimum)</em> -->
   <br>
-  <%= f.input :password_confirmation, autocomplete: "off" %>
+  <%= f.input :password_confirmation,  autocomplete: "off"%>
   <%= f.input :age, collection: 10..100 %>
   <%= f.input :city, autofocus: true %>
   <%= f.input :state, collection: us_states, autofocus: true %>
@@ -15,10 +14,3 @@
   <%= f.input :image %>
   <%= f.button :submit %>
 <% end %>
-
-<%= render "devise/shared/links" %>
-
-
-
-
-
