@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    
 
     #config = {
     #  consumer_key: ENV['twitter_key'],
