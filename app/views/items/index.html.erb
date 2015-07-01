@@ -2,7 +2,7 @@
 
 <h1>Listing Items</h1>
 
-<table>
+<table class="table -striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -39,4 +39,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to '<button type="button" class="btn">New Item</button>'.html_safe, new_item_path %>
