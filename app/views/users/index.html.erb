@@ -11,6 +11,7 @@
         <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
       <% else %>
         <%= link_to item.title, item_path(item.id)%>
+        <a href= <%= "/" %> id="close_bucket" itemid=<%= item.id %> class='glyphicon glyphicon-unchecked'></a><br>
       <% end %>
     <% end %>
   </div>
@@ -36,3 +37,4 @@
   <% end %>
    <a class="close" href="/">Cancel</a></p>
 </div>
+
