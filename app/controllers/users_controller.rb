@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
   def index
-    
-
     #config = {
     #  consumer_key: ENV['twitter_key'],
     #  consumer_secret: ENV['twitter_secret'],
@@ -13,14 +11,14 @@ class UsersController < ApplicationController
    #@tweets = client.get_all_tweets("thebradhimself")
     @show_stuff = current_user.items.all
     @friends_stuff = current_user.friends
-    @itemid = -5;
-    if(params[:item_id])
-      @itemid = params[:item_id]
-    end
+    @itemid = -500;
   end
 
   def show
     @user = User.find_by(username: params[:username])
+    @show_stuff = @user.items.all
+    @friends_stuff = @user.friends
+
   end
 
 
