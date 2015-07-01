@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.image(:thumb) %></td>
-        <td><%= link_to user.username, user_path(user.username)%></td>
-
-        <% end %>
+    <div class='col-sm-3 text-center'>
+        <%= image_tag user.image(:thumb) %><br>
+        <%= link_to user.username, user_path(user.username)%><br><br>
+    </div>
+<% end %>
