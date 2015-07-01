@@ -30,7 +30,7 @@
         <td><%= link_to 'Show', item %></td>
         <% if item.user == current_user %>
           <td><%= link_to 'Edit', edit_item_path(item.id) %></td>
-          <td><%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', item_path(item.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
