@@ -2,9 +2,12 @@
 <h1><%= current_user.username %></h1>
 <div class='row'>
   <div class="col-sm-2 verticalLine">
-    <%= render 'side_nav' %>
-  </div>
+     <div class="well">
+      <%= render 'side_nav' %>
+      </div>
+    </div>
   <div class="col-sm-3 verticalLine">
+    <div class="well">
     <div class='custom-header'>My buckets<hr /></div>
     <% @show_stuff.each do |item| %>
       <% if item.completed %>
@@ -15,7 +18,9 @@
       <% end %>
     <% end %>
   </div>
+  </div>
   <div class="col-sm-3 verticalLine">
+  <div class="well">
     <div class='custom-header'>Friends Buckets<hr /></div>
     <% @friends_stuff.each do |friend| %>
       <h4><%= friend.username %></h4><br>
@@ -24,6 +29,7 @@
           <%= link_to item.title, item_path(item.id) %><br>
       <% end %>
     <% end %>
+    </div>
   </div>
 </div>
 
