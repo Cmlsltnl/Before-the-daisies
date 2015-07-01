@@ -1,13 +1,48 @@
-<h1 class="page-header"><%= @user.username %> </h1>
-
-<% if current_user.username == params[:username]%>
-<% else %>
-  <%= form_tag(friendships_path, class:'form') do %>
-      <div class="form-group">
-        <%= hidden_field_tag "friendship[user_id]", current_user.id  %>
-        <% @user = User.find_by(username: params[:username]) %>
-        <%= hidden_field_tag "friendship[friend_id]", @user.id  %>
-        <%= submit_tag('Add User as Friend', class: 'btn btn-success btn-lg') %>
+<div class="around-the-world">
+  <div>
+  <h1 class="page-header"><%= @user.username %> </h1>
+  <div class="col-sm-2 verticalLine">
+    <%= image_tag @user.image.url(:thumb) %><br>
+    <%= link_to 'Total Buckets: ', items_path %> <%= link_to @user.items.all.count, items_path%><br>
+    Completed Buckets: <%= Item.where(user_id: @user.id).where(completed: true).count %>
+    <% a = Item.where(user_id: @user.id).where(completed: true).count %>
+    <% b = @user.items.all.count %>
+    <% @a = (a.to_f / b.to_f) * 100 %>
+    <p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="<%= a %>"
+      aria-valuemin="0" aria-valuemax='<%current_user.items.all.count%>' style='width: <%= @a %>%'>
+        <%= @a.round(2)%>%
       </div>
+    </div>
+    </p>
+    <% if current_user.username == params[:username]%>
+    <% elsif @friends_list.include? @user.username %>
+    <% else %>
+      <%= form_tag(friendships_path, class:'form') do %>
+        <div class="form-group">
+          <%= hidden_field_tag "friendship[user_id]", current_user.id  %>
+          <% @user = User.find_by(username: params[:username]) %>
+          <%= hidden_field_tag "friendship[friend_id]", @user.id  %>
+          <%= submit_tag('Add User as Friend', class: 'btn btn-success btn-med') %>
+        </div>
+      <% end %>
     <% end %>
-<% end %>
+  </div>
+  <div class="col-sm-3 verticalLine">
+    <div class='custom-header'><%=@user.username %>'s buckets<hr /></div>
+    <% @show_stuff.each do |item| %>
+      <% if item.completed %>
+        <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
+      <% else %>
+        <%= link_to item.title, item_path(item.id)%><br>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-3 verticalLine">
+    <div class='custom-header'><%=@user.username %>'s friends<hr /></div>
+    <% @friends_stuff.each do |friend| %>
+        <%= link_to friend.username, user_path(friend.username) %><br>
+    <% end %>
+  </div>
+</div>

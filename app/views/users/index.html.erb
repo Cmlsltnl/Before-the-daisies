@@ -1,46 +1,45 @@
 <%= link_to 'Find More Friends', find_friends_path %>
-<h1><%= current_user.username %></h1>
-<div class='row'>
-  <div class="col-sm-2 verticalLine">
-     <div class="well">
+<div class="around-the-world">
+  <h1><%= current_user.username %></h1>
+  <div class='row'>
+    <div class="col-sm-2 verticalLine">
       <%= render 'side_nav' %>
-      </div>
     </div>
-  <div class="col-sm-3 verticalLine">
-    <div class="well">
-    <div class='custom-header'>My buckets<hr /></div>
-    <% @show_stuff.each do |item| %>
-      <% if item.completed %>
-        <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
-      <% else %>
-        <%= link_to item.title, item_path(item.id)%>
-        <a href= <%= "/" %> id="close_bucket" itemid=<%= item.id %> class='glyphicon glyphicon-unchecked'></a><br>
+    <div class="col-sm-3 verticalLine scroller">
+      <div class='custom-header'>My buckets<hr /></div>
+      <% @show_stuff.each do |item| %>
+        <% if item.completed %>
+          <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
+        <% else %>
+          <%= link_to item.title, item_path(item.id)%>
+          <a href= <%= "/" %> id="close_bucket" itemid=<%= item.id %> class='glyphicon glyphicon-unchecked'></a><br>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  </div>
-  <div class="col-sm-3 verticalLine">
-  <div class="well">
-    <div class='custom-header'>Friends Buckets<hr /></div>
-    <% @friends_stuff.each do |friend| %>
-      <h4><%= friend.username %></h4><br>
-      <% @item = friend.items %>
-      <% @item.each do |item| %>
-          <%= link_to item.title, item_path(item.id) %><br>
-      <% end %>
-    <% end %>
     </div>
+    <div class="col-sm-3 verticalLine scroller">
+      <div class='custom-header'>Friends Buckets<hr /></div>
+      <% @friends_stuff.each do |friend| %>
+        <div class='custom-header2'><%= link_to friend.username, user_path(friend.username) %></div><hr />
+        <% @item = friend.items %>
+        <% if @item.count == 0 %>
+          <p>No buckets currently.</p>
+        <% end %>
+        <% @item.each do |item| %>
+            <%= link_to item.title, item_path(item.id) %><br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="messagepop pop">
+
+    <%= form_tag(item_path(@itemid), method: :put) do %>
+      <%= label_tag 'When did you complete your bucket?' %>
+
+      <%= select_date Date.today, prefix: "item[completed_date]" %><br>
+      <%= hidden_field_tag "item[completed]", :true %>
+      <%= submit_tag 'Complete bucket' %>
+    <% end %>
+     <a class="close" href="">Cancel</a></p>
   </div>
 </div>
-
-<div class="messagepop pop">
-
-  <%= form_tag(item_path(@itemid), method: :put) do %>
-    <%= label_tag 'When did you complete your bucket?' %>
-    <%= select_date Date.today, prefix: "item[completed_date]" %><br>
-    <%= hidden_field_tag "item[completed]", :true %>
-    <%= submit_tag 'Complete bucket' %>
-  <% end %>
-   <a class="close" href="/">Cancel</a></p>
-</div>
-
