@@ -12,6 +12,10 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+    end
   end
 
   # GET /items/new
@@ -77,7 +81,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description, :location, :completed, :importance, :user_id, :image, :completed_date)
+      params.require(:item).permit(:title, :description, :location, :completed, :importance, :user_id, :image, :completed_date, :latitude, :longitude)
 
     end
 
