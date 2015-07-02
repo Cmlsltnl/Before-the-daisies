@@ -2,7 +2,6 @@
 @import "bootstrap";
 
 
-body { padding-bottom: 70px; }
 
 .around-the-world{
   border-style: solid;
@@ -11,18 +10,36 @@ body { padding-bottom: 70px; }
   border-radius: 5px;
   border-color: #d1d1d1;
   background-color: white;
-
 }
 
 #item_importance, #user_age, #user_state {
   max-width: 75px;
 }
 
-
-#user_username, #user_email, #user_password, #user_password_confirmation, #user_city, #user_zipcode {
-  max-width: 350px;
+#sign-up-form {
+  width: 70%;
 }
 
+.optional {
+  display: block;
+  max-height: 75px;
+}
+.optional:after {
+    content:"\a";
+    white-space: pre;
+}
+
+body { padding-bottom: 70px; }
+
+
+#item_importance{
+  max-width: 75px;
+}
+
+/*#user_username, #user_email, #user_password, #user_password_confirmation, #user_city, #user_zipcode, #user_age, #user_state {
+  max-width: 350px;
+}
+*/
 .simple_form label {
   float: left;
   width: 100px;

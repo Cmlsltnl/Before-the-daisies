@@ -35,7 +35,7 @@
       <% if item.completed %>
         <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-check"></div><br>
       <% else %>
-        <%= link_to item.title, item_path(item.id)%><br>
+        <%= link_to item.title, item_path(item.id)%>&nbsp<div class="glyphicon glyphicon-unchecked"></div><br>
       <% end %>
     <% end %>
   </div>
