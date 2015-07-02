@@ -388,7 +388,8 @@
       var base_options;
       base_options = {
         center: new (this.primitives().latLng)(this.args.lat, this.args.lng),
-        radius: this.args.radius
+        radius: this.args.radius,
+        zoom: 5
       };
       return _.defaults(base_options, this.provider_options);
     };
@@ -477,7 +478,7 @@
       return {
         mapTypeId: this.primitives().mapTypes('ROADMAP'),
         center: new (this.primitives().latLng)(0, 0),
-        zoom: 8
+        zoom: 5
       };
     };
 
@@ -935,6 +936,8 @@
     var factory;
     factory = {
       point: google.maps.Point,
+      zoom: 5,
+      maxZoom: 10,
       size: google.maps.Size,
       circle: google.maps.Circle,
       latLng: google.maps.LatLng,
@@ -985,7 +988,14 @@
 }).call(this);
 
 map.fitBounds(bounds);
-var listener = google.maps.event.addListener(map, "idle", function() { 
-  if (map.getZoom() > 16) map.setZoom(16); 
-  google.maps.event.removeListener(listener); 
+var listener = google.maps.event.addListener(map, "idle", function() {
+  console.log('idle zoom');
+  if (map.getZoom() > 16) map.setZoom(16);
+  google.maps.event.removeListener(listener);
+});
+
+google.maps.event.addListenerOnce(map, 'zoom_changed', function() {
+    console.log('zoom zoom');
+    var oldZoom = map.getZoom();
+    map.setZoom(oldZoom -5); //Or whatever
 });
