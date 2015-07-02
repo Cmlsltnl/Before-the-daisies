@@ -986,6 +986,6 @@
 
 map.fitBounds(bounds);
 var listener = google.maps.event.addListener(map, "idle", function() { 
-  if (map.getZoom() > 16) map.setZoom(16); 
+  if (map.getZoom() < 16) map.setZoom(16); 
   google.maps.event.removeListener(listener); 
 });

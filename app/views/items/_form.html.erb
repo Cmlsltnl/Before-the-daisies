@@ -2,7 +2,8 @@
   <%= simple_form_for @item, html: { multipart: true } do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.input :location %>
+    <%= f.input :location, :hint => "e.g. seattle, Mount Kilimanjaro, 664-682 7th Ave
+New York, NY" %><br>
     <%= f.input :importance, :collection => 1..10, :hint => "1 - not important, 5 - some what important, 10 - very important" %>
     <%= f.input :image %>
     <%= f.button :submit %>
