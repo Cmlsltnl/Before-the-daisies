@@ -16,6 +16,7 @@
 //= require gmaps/google
 //= require_tree .
 
+
 function deselect(e) {
   $('.pop').slideFadeToggle(function() {
     e.removeClass('selected');

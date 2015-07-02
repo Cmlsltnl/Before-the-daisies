@@ -47,11 +47,13 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      completed_date = params[:item][:completed_date]
-      completed_year = completed_date[:year].to_i
-      completed_month = completed_date[:month].to_i
-      completed_day = completed_date[:day].to_i
-      params[:item][:completed_date] = Date.new(completed_year, completed_month, completed_day)
+      if(params[:item][:completed_date])
+        completed_date = params[:item][:completed_date]
+        completed_year = completed_date[:year].to_i
+        completed_month = completed_date[:month].to_i
+        completed_day = completed_date[:day].to_i
+        params[:item][:completed_date] = Date.new(completed_year, completed_month, completed_day)
+      end
 
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }

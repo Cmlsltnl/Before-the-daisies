@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
 
   def index
-    @users = User.all 
+    @users = User.all
   end
 
   def show
@@ -18,7 +18,15 @@ class FriendshipsController < ApplicationController
     else
       render :new
     end
+  end
 
+  def destroy
+
+    @friendy = Friendship.find(params[:id])
+    @friend = @friendy.friend_id
+    @friend = User.find(@friend)
+    @friendy.destroy
+    redirect_to user_path(@friend.username)
   end
 
 
@@ -26,6 +34,4 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id)
   end
-
-
 end
