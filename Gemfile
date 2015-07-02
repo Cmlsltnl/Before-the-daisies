@@ -27,6 +27,7 @@ gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem "koala", "~> 2.0"
 
 gem 'geocoder'
 gem 'gmaps4rails'

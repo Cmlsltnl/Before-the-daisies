@@ -44,21 +44,27 @@
           None.
           <% end %>
         </p>
-
-
+        <%if @item.completed_date != nil %>
+        <% tweeter = 'I completed my bucketlist item "' + @item.title + '" on ' + @item.completed_date.strftime("%B %d, %Y") %>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="BeforeTheDaisies.com" data-text='<%= tweeter %>' data-hashtags="BeforeTheDaisies">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <% else %>
+        <% tweeter = 'I added a bucketlist item "' + @item.title + '" on ' + @item.created_at.strftime("%B %d, %Y") %>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="BeforeTheDaisies.com" data-text='<%= tweeter %>' data-hashtags="BeforeTheDaisies">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <% end %>
         <%= link_to 'Edit', edit_item_path(@item) %> |
         <%= link_to 'Back', index_path %>
       </div>
       <div class="col-xs-6" id="map" style='width: 500px; height: 500px;'>
-      <script type="text/javascript">
-      handler = Gmaps.build('Google');
-      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-        markers = handler.addMarkers(<%=raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-      </script>
+        <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers(<%=raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+        </script>
       </div>
-    </div>
     </div>
   </div>
