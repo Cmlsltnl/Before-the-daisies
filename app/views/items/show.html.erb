@@ -36,6 +36,7 @@
           <%= @item.importance %>
         </p>
 
+<<<<<<< HEAD
         <p>
           <strong>Completed date:</strong>
           <% if(@item.completed_date != nil) %>
@@ -67,4 +68,16 @@
         </script>
       </div>
     </div>
+    <div id="comments">
+      <h4><%= @item.comments.count %> comments</h4>
+      <hr>
+      <%= render @item.comments %>
+      <hr>
+      <h4>Add a Comment:</h4>
+      <%= render "comments/form" %>
+      <hr>
+    </div>
   </div>
+
+
+  

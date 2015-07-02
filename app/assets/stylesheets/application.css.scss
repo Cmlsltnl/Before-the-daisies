@@ -3,6 +3,18 @@
 
 
 
+.in {
+  display: inline;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.time {
+  font-size: 10px;
+}
+
 .around-the-world{
   border-style: solid;
   border-width: medium;
@@ -36,10 +48,6 @@ body { padding-bottom: 70px; }
   max-width: 75px;
 }
 
-/*#user_username, #user_email, #user_password, #user_password_confirmation, #user_city, #user_zipcode, #user_age, #user_state {
-  max-width: 350px;
-}
-*/
 .simple_form label {
   float: left;
   width: 100px;
@@ -187,3 +195,4 @@ label {
   margin: 8px 0;
   padding-bottom: 8px;
 }
+

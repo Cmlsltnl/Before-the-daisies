@@ -1,5 +1,5 @@
 
-<%= image_tag current_user.image.url(:thumb) %><br>
+<%= image_tag current_user.image.url(:medium) %><br>
 <%= link_to 'All Buckets: ', items_path %> <%= link_to current_user.items.all.count, items_path%><br>
 Completed Buckets: <%= Item.where(user_id: current_user.id).where(completed: true).count %>
 <% a = Item.where(user_id: current_user.id).where(completed: true).count %>
