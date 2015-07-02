@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
 
   # paperclip for the user
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "150x150#"}
+  has_attached_file :image, styles: { medium: "150x150>", thumb: "50x50>"}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   # Include default devise modules. Others available are:

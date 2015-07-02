@@ -44,11 +44,13 @@
   <hr>
 
   <div id="comments">
-    <h2><%= @item.comments.count %> comments</h2>
+    <h4><%= @item.comments.count %> comments</h4>
+    <hr>
     <%= render @item.comments %>
     <hr>
-    <h3>Add a Comment:</h3>
+    <h4>Add a Comment:</h4>
     <%= render "comments/form" %>
+    <hr>
   </div>
 
   <%if @item.completed_date != nil %>

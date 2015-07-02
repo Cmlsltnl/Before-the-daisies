@@ -1,17 +1,22 @@
+
+<%= image_tag current_user.image(:thumb) %>
+
 <%= form_for([@item, @item.comments.build]) do |f| %>
-  <P>
+ <!--  <P>
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </P>
+  </P> -->
 
-   <blockquote>
-    <%= f.label :body %>
+   
+  <p class='in'>
+    <%= f.label "#{current_user.username}" %>
     <%= f.text_area :body %>
-   </blockquote>
+  </p>
+   
     
 
   </br>
 
-  <%= f.submit %>
+  <%= f.submit 'Comment' %>
 
 <% end %>
