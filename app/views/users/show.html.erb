@@ -2,7 +2,7 @@
   <div>
   <h1 class="page-header"><%= @user.username %> </h1>
   <div class="col-sm-2 verticalLine">
-    <%= image_tag @user.image.url(:thumb) %><br>
+    <%= image_tag @user.image.url(:medium) %><br>
     <%= link_to 'Total Buckets: ', items_path %> <%= link_to @user.items.all.count, items_path%><br>
     Completed Buckets: <%= Item.where(user_id: @user.id).where(completed: true).count %>
     <% a = Item.where(user_id: @user.id).where(completed: true).count %>

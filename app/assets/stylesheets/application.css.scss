@@ -26,6 +26,17 @@ body{
   background-color: white;
 }
 
+.picture-wrapper{
+  border-style: solid;
+  border-width: medium;
+  border-radius: 5px;
+  border-color: #d1d1d1;
+  background-color: white;
+  margin: 2px;
+  width: 250px;
+  height: 190px;
+}
+
 #item_importance {
   max-width: 75px;
 }
@@ -197,4 +208,3 @@ label {
   margin: 8px 0;
   padding-bottom: 8px;
 }
-

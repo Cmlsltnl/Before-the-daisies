@@ -1,7 +1,26 @@
 
   <% @users.each do |user| %>
-      <div class='col-sm-3 text-center around-the-world', style="margin:2px;"}>
-          <%= image_tag user.image(:thumb) %><br>
+    <!--  <div class='col-sm-4'}>
+          <%= image_tag user.image(:medium) %><br>
           <%= link_to user.username, user_path(user.username)%><br><br>
       </div>
+  <% end %>-->
+
+
+<div class="form-group">
+
+  <% @users.each_slice(6) do |pictures| %>
+    <div class="row">
+      <% pictures.each do |picture| %>
+        <div class="col-xs-3">
+          <div class="picture-wrapper text-center">
+          <%= image_tag picture.image(:medium) %><br>
+          <%= link_to picture.username, user_path(picture.username)%><br><br>
+        </div>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <br>
   <% end %>
+</div>
