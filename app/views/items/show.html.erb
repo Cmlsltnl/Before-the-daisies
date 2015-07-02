@@ -40,6 +40,16 @@
       None.
     <% end %>
   </p>
+  <hr>
+
+  <div id="comments">
+    <h2><%= @item.comments.count %> comments</h2>
+    <%= render @item.comments %>
+    <hr>
+    <h3>Add a Comment:</h3>
+    <%= render "comments/form" %>
+  </div>
+
 
 
   <%= link_to 'Edit', edit_item_path(@item) %> |
