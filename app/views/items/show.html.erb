@@ -58,7 +58,6 @@
       <div class="col-xs-6" id="map" style='width: 500px; height: 500px;'>
       <script type="text/javascript">
       handler = Gmaps.build('Google');
-
       handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
         markers = handler.addMarkers(<%=raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
@@ -68,13 +67,26 @@
       </script>
       </div>
     </div>
-    <div id="comments">
-      <h4><%= @item.comments.count %> comments</h4>
-      <hr>
-      <%= render @item.comments %>
-      <hr>
-      <h4>Add a Comment:</h4>
-      <%= render "comments/form" %>
-      <hr>
-    </div>
+  <p>
+    <strong>Completed date:</strong>
+    <% if(@item.completed_date != nil) %>
+      <%= @item.completed_date.strftime("%B %d, %Y") %>
+    <% else %>
+      None.
+    <% end %>
+  </p>
+
+  <hr>
+
+  <div id="comments">
+    <h4><%= @item.comments.count %> comments</h4>
+    <hr>
+    <% if @item.comments.count > 0 %>
+      <% @item.comments.each do |comment| %>
+        <%= render(partial: 'comments/comment', locals: {comment: comment}) %>
+      <% end %>
+    <% end %>
+    <h4>Add a Comment:</h4>
+    <%= render "comments/form" %>
+    <hr>
   </div>

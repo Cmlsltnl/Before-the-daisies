@@ -1,12 +1,14 @@
 <div class="comment clearfix">
   <div class="comment_context">
-    <p><%= image_tag comment.item.user.image(:thumb) %><%= comment.item.user.username %></p>
+    <p><%= image_tag comment.user.image(:thumb) %><%= comment.user.username %></p>
     <p class="comment_body text">
       <%= comment.body %>
-      <!-- link_to "Delete Comment", item_comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %> -->
+      <!-- if @item.comment.user == current_user.id && user_signed_in? %> -->
+      <!-- link_to "Delete Comment", item_comment_path(@item, comment), method: :delete %> -->
+       <!-- end %> -->
     </p>
     <p class="comment_time" text-size="15">
-      <em><%= time_ago_in_words(comment.created_at) %>Ago</em>
+      <em><%= time_ago_in_words(comment.created_at) %> ago</em>
     </p>
     <hr>
   </div>
