@@ -18,6 +18,11 @@
     </p>
     <% if current_user.username == params[:username]%>
     <% elsif @friends_list.include? @user.username %>
+      <% @user = User.find_by(username: params[:username]) %>
+      <% @friend_id = @user.id %>
+      <% @user_id = current_user.id %>
+      <% @friendship = Friendship.where(user_id: @user_id).where(friend_id: @friend_id) %>
+      <%= link_to 'Unfriend', friendship_path(@friendship[0].id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-med' %>
     <% else %>
       <%= form_tag(friendships_path, class:'form') do %>
         <div class="form-group">

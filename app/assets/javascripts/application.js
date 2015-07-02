@@ -1,3 +1,6 @@
+//= require jquery
+//= require_tree .
+//= require jquery_ujs
 
 function deselect(e) {
   $('.pop').slideFadeToggle(function() {
