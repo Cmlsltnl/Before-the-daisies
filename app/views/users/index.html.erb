@@ -36,9 +36,9 @@
     <%= form_tag(item_path(@itemid), method: :put) do %>
       <%= label_tag 'When did you complete your bucket?' %>
 
-      <%= select_date Date.today, prefix: "item[completed_date]" %><br>
+      <p><%= select_date Date.today, prefix: "item[completed_date]" %></p>
       <%= hidden_field_tag "item[completed]", :true %>
-      <%= submit_tag 'Complete bucket' %>
+      <%= submit_tag 'Complete bucket' %><br>
     <% end %>
      <a class="close" href="">Cancel</a></p>
   </div>

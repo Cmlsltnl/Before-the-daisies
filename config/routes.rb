@@ -13,10 +13,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
   resources :items do
     resources :comments
   end
   
+
+  resources :items
+  get '/facebook' => 'items#facebook'
+
   resources :friendships
 
   root 'welcome#index'
