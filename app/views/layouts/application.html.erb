@@ -13,57 +13,59 @@
     <div class="navbar-inner">
       <div class="container">
         <% if current_user %>
-          <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", index_path %></div>
+        <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", index_path %></div>
         <% else %>
-          <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", root_path %></div>
+        <div id="logo" class="navbar-brand"><%= link_to "Before The Daisies", root_path %></div>
         <% end %>
         <nav class="collapse navbar-collapse navbar-ex1-collapse">
           <% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'My Bucket Items', index_path %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'My Bucket Items', index_path %>
               <li><%= link_to 'Create Item', new_item_path %></li>
               <li><%= link_to 'Account', edit_user_registration_path %></li>
               <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
             </ul>
-          <% else %>
+            <% else %>
             <ul class="nav navbar-nav pull-right">
-
-                  <li>
-                  <%= form_for(:user, :url => session_path(:user)) do |f| %>
-                    <%= f.text_field :email, placeholder: 'Email' %>
-                    <%= f.password_field :password, placeholder: 'Password' %>
-                    <%= f.submit 'Sign in' %>
-                    <%= link_to "Forgot your password?", new_password_path(:user) %>
-                  <% end %>
-                  </li>
-                  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <li>
+                <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                <%= f.text_field :email, placeholder: 'Email' %>
+                <%= f.password_field :password, placeholder: 'Password' %>
+                <%= f.submit 'Sign in' %>
+                <%= link_to "Forgot your password?", new_password_path(:user) %>
+                <% end %>
+              </li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
             </ul>
-          <% end %>
-        </nav>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container">
+
+      <%= yield %>
+
+      <div class="row">
+        <footer>
+          <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container">
+              <%= link_to 'Features', features_index_path, :class => 'navbar-link' %>
+              <%= link_to 'About', about_index_path, :class => 'navbar-link' %>
+              <%= link_to 'Contact', contact_index_path, :class => 'navbar-link' %>
+
+              <p align="right">copyright &copy <%= Time.now.year %></p>
+
+            </div>
+          </nav>
+
+        </footer>
       </div>
     </div>
-  </header>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<div class="container">
+  </body>
+  </html>
 
-  <%= yield %>
+              
 
-<div class="row">
-  <footer>
-  <nav class="navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container">
-  <%= link_to 'Features', features_index_path, :class => 'navbar-link' %>
-  <%= link_to 'About', about_index_path, :class => 'navbar-link' %>
-  <%= link_to 'Contact', contact_index_path, :class => 'navbar-link' %>
-
-    <p align="right">copyright &copy <%= Time.now.year %></p>
-
-  </div>
-</nav>
-
-  </footer>
-  </div>
-</div>
-</body>
-</html>
