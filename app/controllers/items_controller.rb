@@ -6,12 +6,16 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = current_user.items.all
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+    end
   end
 
   # GET /items/new
@@ -43,6 +47,14 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
+      if(params[:item][:completed_date])
+        completed_date = params[:item][:completed_date]
+        completed_year = completed_date[:year].to_i
+        completed_month = completed_date[:month].to_i
+        completed_day = completed_date[:day].to_i
+        params[:item][:completed_date] = Date.new(completed_year, completed_month, completed_day)
+      end
+
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
@@ -71,7 +83,8 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description, :location, :completed, :importance, :completed_date, :user_id)
+      params.require(:item).permit(:title, :description, :location, :completed, :importance, :user_id, :image, :completed_date, :latitude, :longitude)
+
     end
 
     def authorized_user

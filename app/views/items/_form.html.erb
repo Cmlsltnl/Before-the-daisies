@@ -1,45 +1,13 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div class="container bord new" style="background-color: white">
+  <%= simple_form_for @item, html: { multipart: true } do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :location, :hint => "e.g. seattle, Mount Kilimanjaro, 664-682 7th Ave
+New York, NY" %><br>
+    <%= f.input :importance, :collection => 1..10, :hint => "1 - not important, 5 - some what important, 10 - very important" %>
+    <%= f.input :image %>
+    <%= f.button :submit %>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.check_box :completed %>
-  </div>
-  <div class="field">
-    <%= f.label :importance %><br>
-    <%= f.number_field :importance %>
-  </div>
-  <div class="field">
-    <%= f.label :completed_date %><br>
-    <%= f.datetime_select :completed_date %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+ 

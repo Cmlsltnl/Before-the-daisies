@@ -1,17 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class='around-the-world'>
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<h1>My Buckets</h1>
 
-<table>
+<table class="table -striped">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Title</th>
       <th>Description</th>
       <th>Location</th>
       <th>Completed</th>
       <th>Importance</th>
       <th>Completed date</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,17 +20,25 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= image_tag item.image(:thumb) %></td>
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.location %></td>
-        <td><%= item.completed %></td>
+        <%if item.completed %>
+          <td> Yes. </td>
+        <% else %>
+          <td> Nope. </td>
+        <% end %>
         <td><%= item.importance %></td>
-        <td><%= item.completed_date %></td>
-        <td><%= item.user_id %></td>
+        <% if(item.completed_date != nil) %>
+          <td><%= item.completed_date.strftime("%B %d, %Y") %></td>
+        <% else %>
+          <td> None. </td>
+        <% end %>
         <td><%= link_to 'Show', item %></td>
-        <% if user_signed_in? == current_user %>
-          <td><%= link_to 'Edit', edit_item_path(@item.id) %></td>
-          <td><%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if item.user == current_user %>
+          <td><%= link_to 'Edit', edit_item_path(item.id) %></td>
+          <td><%= link_to 'Destroy', item_path(item.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -38,4 +47,5 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to '<button type="button" class="btn">New Item</button>'.html_safe, new_item_path %>
+</div>
